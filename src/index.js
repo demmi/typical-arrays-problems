@@ -1,78 +1,21 @@
 
 exports.min = function min (array) {
-  if (typeof array === "number") {
-    if (arguments.length === 0) { 
-      return 0
-    }
-    let minArray = arguments[0];
-    for (let i of arguments) {
-      if (i < minArray) {
-        minArray = i;
-      }
-    }
-    return minArray;
-    }
-    else {
-    if (array.length === 0) { 
-      return 0
-    }
-    let minArray = array[0];
-    for (let i of array) {
-      if (i < minArray) {
-        minArray = i;
-      }
-    }
-    return minArray;
-    }
-  }
-
-
-exports.max = function max (array) {
-  if (typeof array === "number") {
-    if (arguments.length === 0) { 
-      return 0
-    }
-    let maxArray = arguments[0];
-    for (let i of arguments) {
-      if (i > maxArray) {
-        maxArray = i;
-      }
-    }
-    return maxArray;
-    }
-    else {
-    if (array.length === 0) { 
-      return 0
-    }
-    let minArray = array[0];
-    for (let i of array) {
-      if (i > minArray) {
-        minArray = i;
-      }
-    }
-    return minArray;
-    }
-  }
-
-exports.avg = function avg (array) {
-  if (typeof array === "number") {
-    if (arguments.length === 0) { 
-      return 0
-    }
-    let sumArray = arguments[0];
-    for (let i of arguments) {
-      sumArray += i;
-    }
-    return sumArray / arguments.length;
-  }
-  else {
-    if (array.length === 0) { 
-      return 0
-    }
-    let sumArray = array[0];
-    for (let i of array) {
-      sumArray += i;
-    }
-    return sumArray / array.length;
+  if (!array || array.length === 0){
+    return 0;
+  }else {
+    return Math.min.apply(null, array)
   }
 }
+
+exports.max = function max (array) {
+  if (!array || array.length === 0){
+    return 0;
+  }else {
+    return Math.max.apply(null, array)
+  }
+}
+
+exports.avg = function avg(array) {
+  if (array <= 0 || !array) return 0;
+  return array.reduce((item, acc) => acc + item) / array.length;
+};
